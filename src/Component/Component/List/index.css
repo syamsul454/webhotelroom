@@ -1,0 +1,27 @@
+.body {
+    background: '#fff';
+    padding: 24px; 
+    min-height: 240;
+}
+
+.select-b {
+    width: 500px;
+    margin-left: 25%;
+}
+
+.content {
+    margin-top: 2%;
+   margin-left: 10%;
+}
+
+.btn {
+    background-color: blue;
+    color: cornsilk;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.title {
+    text-align: center;
+}
