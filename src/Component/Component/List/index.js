@@ -4,8 +4,11 @@ import './index.css'
 const { Meta } = Card;
 const List = (props) => {
     return(
-       
-<Card
+       <div>
+ <p>Selamat Data Di Sistem Pembayaran Pamdes Desa Pringgasela</p>
+       </div>
+     
+/* <Card
     style={{ width: 250, float: "left", marginLeft: 10, marginTop:10 }}
     cover={
       <img
@@ -22,9 +25,10 @@ const List = (props) => {
       title={props.judul}
       description="This is the description"
     />
-</Card>
-        
+</Card> */
     )
+        
+    //)
 }
 
 export default List

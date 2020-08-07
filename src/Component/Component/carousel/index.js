@@ -6,17 +6,17 @@ const banner =  () => {
         <div className= 'banner'>
         <Carousel autoplay>
         <div>
-        <img className='img' alt='icon' src="https://placeimg.com/1000/300/arch/sepia"/>
+        <img className='img' alt='icon' src="https://www.suaralomboknews.com/wp-content/uploads/ktz/Cara-Atasi-Dengan-Cepat-Kran-Air-Yang-Bocor-34rzlakktzcqemj2p9wetm.jpg"/>
        
         </div>
         <div>
-        <img className='img' alt='icon' src="https://placeimg.com/1000/300/nature/grayscale"/>
+        <img className='img' alt='icon' src="https://www.suaralomboknews.com/wp-content/uploads/ktz/Cara-Atasi-Dengan-Cepat-Kran-Air-Yang-Bocor-34rzlakktzcqemj2p9wetm.jpg"/>
         </div>
         <div>
-        <img className='img' alt='icon' src="https://images4.alphacoders.com/814/thumb-1920-81446.jpg"/>
+        <img className='img' alt='icon' src="https://www.suaralomboknews.com/wp-content/uploads/ktz/Cara-Atasi-Dengan-Cepat-Kran-Air-Yang-Bocor-34rzlakktzcqemj2p9wetm.jpg"/>
         </div>
         <div>
-        <img className='img' alt='icon' src=" https://images.alphacoders.com/270/thumb-1920-270963.jpg"/>
+        <img className='img' alt='icon' src="https://www.suaralomboknews.com/wp-content/uploads/ktz/Cara-Atasi-Dengan-Cepat-Kran-Air-Yang-Bocor-34rzlakktzcqemj2p9wetm.jpg"/>
         </div>
       </Carousel>
       </div>

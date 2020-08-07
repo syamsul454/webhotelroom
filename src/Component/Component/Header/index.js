@@ -1,14 +1,35 @@
 import React from 'react'
-import { Layout} from 'antd';
-import './index.css'
-const { Header} = Layout;
-const Head =  () => {
-    return (
-    <Header className="header">
-      <h1 className='judul'>Booking Bioskop</h1>
-    </Header>
-    )
+import './style.css'
+import { Layout, Menu } from 'antd'
+const { Header } = Layout;
+
+
+const Head = () => {
+  return (
+    <Layout className="layout">
+      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+        <div className="logo">
+          <div className="Pamdes">
+            <p className="judul">
+              Pamdes
+            </p>
+          </div>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px', width: '600px',height: '64px'}}
+          >
+            <Menu.Item key="1">Data Pelanggan</Menu.Item>
+            <Menu.Item key="2">Data Pembayaran</Menu.Item>
+            <Menu.Item key="3">Data Pegawai</Menu.Item>
+          </Menu>
+        </div>
+      </Header>
+    </Layout>
+  )
 }
+
 
 export default Head
 
