@@ -1,32 +1,52 @@
 import React from 'react';
 import { Layout} from 'antd';
-import Header from './Component/Component/Header'
-import List from './Component/Component/List'
-import Banner from './Component/Component/carousel'
-import Footer from './Component/Component/Footer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Header from './Component/Header'
+import Home from './Component/Home'
+import DataPelanggan from './Component/DataPelanggan'
+import DataPegawai from './Component/DataPegawai'
+import Pembayaran from './Component/Pembayaran'
+import Footer from './Component/Footer'
 import axios from 'axios'
 const {Content} = Layout;
 
 
 class App extends React.Component {
    
-  
   render(){
     return (
+      <Router>
       <Layout>
       <div>
+      
         <Header />
-        <Banner />
         <Content className = "content">
-          <div>
-            < p style={{textAlign:'center',fontSize:'30px'}}>
-              Selamat Datang di Sistem Pembayaran Pamdes Desa Prinnggasela
-            </p>
-          </div>
+      
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/pegawai">
+            <DataPegawai />
+          </Route>
+          <Route path="/pelanggan">
+            <DataPelanggan />
+          </Route>
+        </Switch>
+      </div>
+   
         </Content>
       </div>
        <Footer/>
       </Layout>
+      </Router>
     )
   }
 }
