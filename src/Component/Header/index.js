@@ -29,7 +29,7 @@ const Head = () => {
               style={{ lineHeight: '64px', width: '600px', height: '64px' }}
             >
               <Menu.Item ><Link to="pelanggan">Data Pelanggan </Link> </Menu.Item>
-              <Menu.Item > Data Pembayaran</Menu.Item>
+              <Menu.Item ><Link to="pembayaran">Data Pembayaran </Link></Menu.Item>
               <Menu.Item ><Link to="pegawai"> Data Pegawai</Link></Menu.Item>
             </Menu>
           </div>
