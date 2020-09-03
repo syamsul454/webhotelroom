@@ -39,6 +39,9 @@ class App extends React.Component {
           <Route path="/pelanggan">
             <DataPelanggan />
           </Route>
+          <Route path="/pembayaran">
+            <Pembayaran/>
+          </Route>
         </Switch>
       </div>
    

@@ -3,13 +3,19 @@ import { Card, Table, Divider, Button, Modal, Form, Input, Select, Row, Col } fr
 import axios from 'axios';
 import './index.css'
 import { connect } from 'react-redux'
+import API from '../../Services';
 
 // table 
 const columns = [
   {
     title: 'Nama',
-    dataIndex: 'nama',
-    key: 'nama',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Kode Pelanggan',
+    dataIndex: 'code_pelanggan',
+    key: 'code_pelanggan',
   },
   {
     title: 'Nomor KK',
@@ -32,7 +38,7 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <span>
-        <a>Edit {record.name}</a>
+        <a>Edit</a>
         <Divider type="vertical" />
         <a>Delete</a>
       </span>
@@ -73,12 +79,29 @@ class DataPelanggan extends Component {
   constructor(props){
     super(props)
     this.state = {
-      desa : []
+      desa : [],
+      formData : [],
+      name : '',
+      nomor_kk : '',
+      DataPelanggan: []
+      
     }
+   
+  }
+  // register 
+  name = event => {
+    this.setState({
+      name: event.target.value,
+    });
+  }
+
+  nomor_kk = event => {
+    this.setState({
+      nomor_kk: event.target.value,
+    });
   }
   // modal 
   state = { visible: false };
-
   showModal = () => {
     this.setState({
       visible: true,
@@ -86,10 +109,11 @@ class DataPelanggan extends Component {
   };
 
   handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
+     const data = {
+       'name': this.state.name,
+       'nomor_kk' : this.state.nomor_kk
+     }
+    console.log(data)
   };
 
   handleCancel = e => {
@@ -97,11 +121,19 @@ class DataPelanggan extends Component {
     this.setState({
       visible: false,
     });
+   
   };
   // form 
 
   componentDidMount(){
-    axios.get('https://pamdes.herokuapp.com/api/data-desa').then(res => {
+      API.DataPelanggan().then(result => {
+          this.setState({
+            DataPelanggan : result
+          })
+          console.log(this.state.DataPelanggan)
+      })
+
+    axios.get('http://156.67.219.57/api/data-desa').then(res => {
       const desa = res.data
       console.log(desa)
       this.setState({desa})
@@ -127,10 +159,10 @@ class DataPelanggan extends Component {
             <Row>
               <Col lg={{ span: 10 }} >
                 <Form.Item label="Nama">
-                  <Input placeholder="input placeholder" />
+                  <Input name="name" placeholder="input placeholder" onChange={this.name} />
                 </Form.Item>
                 <Form.Item label="Nomor Kk">
-                  <Input placeholder="input placeholder" />
+                  <Input name = "nomor_kk" placeholder="input placeholder" onChange={this.nomor_kk} />
                 </Form.Item>
                 <Form.Item label="Nomor Telepon">
                   <Input placeholder="input placeholder" />
@@ -172,7 +204,7 @@ class DataPelanggan extends Component {
                     {this.state.desa.map((desa, index) => 
                       <Option value="jack">{desa.name}</Option>
                     )}
-                    
+
                   </Select>,
             </Form.Item>
                 <Form.Item label="Alamat">
@@ -183,7 +215,7 @@ class DataPelanggan extends Component {
           </Form>
         </Modal>
         {/* ------------------- */}
-        <Table bordered="false" columns={columns} dataSource={data} />
+        <Table bordered="false" columns={columns} dataSource={this.state.DataPelanggan} />
       </Card>
     )
   }
