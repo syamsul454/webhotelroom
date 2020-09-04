@@ -4,7 +4,7 @@ const { Footer } = Layout;
 
 const footer = () => {
     return (
- <Footer style={{ textAlign: 'center' }}>Pamdes Desa Pringgasela</Footer>
+ <Footer style={{ textAlign: 'center' }}>Perusahan Air Minum Desa Pringgasela</Footer>
     );
 }
 
