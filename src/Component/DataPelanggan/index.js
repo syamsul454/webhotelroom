@@ -189,7 +189,7 @@ class DataPelanggan extends Component {
     return (
       <Card title="Data Pelanggan" className="card" >
         <div className="btn-add" >
-          <Button type="primary" onClick={this.showModal} >Add Data Pelanggan</Button>
+          <Button type="primary" onClick={this.showModal} >Tambah Data Pelanggan</Button>
         </div>
         {/* modal add data pelanggan */}
         <Modal
