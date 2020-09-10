@@ -18,7 +18,7 @@ const Head = () => {
           <div className="logo">
             <div className="Pamdes">
               <p className="judul">
-                Pamdes
+                Pamdes Pringgasela
             </p>
             </div>
 
