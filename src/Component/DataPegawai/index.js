@@ -12,6 +12,14 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
   },
+
+  {
+    title: 'Username',
+    dataIndex: 'user.username',
+    key: 'name',
+  },
+
+
   {
     title: 'Nomor Induk Pegawai',
     dataIndex: 'nip',
@@ -48,7 +56,7 @@ const data = [
   {
     key: '1',
     nama: 'syamsul',
-    nomor_kk: 6764678787876777,
+    nip: 6764678787876777,
     nomor_telepon: 82340566,
     alamat: 'dasan baru'
   }
@@ -100,17 +108,62 @@ class DataPegawai extends Component {
       desa : [],
       formData : [],
       name : '',
-      nomor_kk : '',
+      nip : '',
       nomor_telepon : '',
       jenis_kelamin : '',
       dusun : '',
       alamat : '',
-      DataPelanggan: []
+      DataPelanggan: [],
+      jabatan:'',
+      username: '',
+      password:''
       
     }
    
   }
   // register 
+  
+  name = e => {
+      this.setState({
+          name : e.target.value
+      })
+  }
+
+  nip = e => {
+    this.setState({
+      nip : e.target.value
+    })
+  }
+  alamat = event => {
+    this.setState({
+      alamat : event.target.value
+    })
+  }
+
+  jabatan = event => {
+    this.setState({
+      jabatan : event.target.value
+    })
+  }
+
+  nomor_telepon = event => {
+    this.setState({
+      nomor_telepon : event.target.value
+    })
+  }
+
+  username = event => {
+    this.setState({
+      username : event.target.value
+    })
+  }
+
+  password = event => {
+    this.setState({
+      password : event.target.value
+    })
+  }
+
   
 
   // modal 
@@ -130,14 +183,17 @@ class DataPegawai extends Component {
   handleOk = e => {
      const data = {
        'name': this.state.name,
-       'nomor_kk' : this.state.nomor_kk,
-       'jenis_kelamin' : this.state.jenis_kelamin,
+       'nip' : this.state.nip,
+       'jabatan' : this.state.jabatan,
        'nomor_telepon' : this.state.nomor_telepon,
-       'id_dusun' : this.state.dusun,
-       'alamat' : this.state.alamat
+       'alamat' : this.state.alamat,
+        'username' : this.state.username,
+        'password' : this.state.password,
+        'c_password' : this.state.password,
+        'role' : 1
      }
 
-     axios.post(`http://156.67.219.57/api/pelanggan`,data).then((result)=> {
+     axios.post(`http://156.67.219.57/api/register`,data).then((result)=> {
               console.log(result.data)
               window.location.reload();
           }, (error) => {
@@ -188,59 +244,29 @@ class DataPegawai extends Component {
           <Form layout="vertical">
             <Row>
               <Col lg={{ span: 10 }} >
+              <Form.Item label="Username">
+                  <Input name="name" placeholder="Username" onChange={this.username} />
+                </Form.Item>
                 <Form.Item label="Nama">
-                  <Input name="name" placeholder="input placeholder" onChange={this.name} />
+                  <Input name="name" placeholder="Nama Pegawai" onChange={this.name} />
                 </Form.Item>
-                <Form.Item label="Nomor Kk">
-                  <Input name = "nomor_kk" placeholder="input placeholder" onChange={this.nomor_kk} />
+                <Form.Item label="Nomor Induk Pegawai">
+                  <Input name = "nip" placeholder="Nomor Induk Pegawai" onChange={this.nip} />
                 </Form.Item>
-                <Form.Item label="Nomor Telepon">
-                  <Input placeholder="input placeholder" onChange={this.nomor_telepon} />
-                </Form.Item>
+                
               </Col>
               <Col lg={{ span: 10, offset: 1 }}>
-                <Form.Item label="Jenis Kelamin">
-                  <Select
-                    showSearch
-                    style={{ width: 200 }}
-                    placeholder="Jenis Kelamin"
-                    optionFilterProp="children"
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                    onChange={this.jenis_kelamin}
-                  >
-                    <Option value="Laki-Laki">Laki-Laki</Option>
-                    <Option value="Perempuan">Perempuan</Option>
-                  </Select>,
-            </Form.Item>
-                <Form.Item label="Dusun">
-                  <Select
-                    showSearch
-                    style={{ width: 200 }}
-                    placeholder="Select a person"
-                    optionFilterProp="children"
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                    onChange={this.dusun}
-                  >
-                    {this.state.desa.map((desa, index) => 
-                      <Option value={desa.id}>{desa.name}</Option>
-                    )}
-
-                  </Select>,
-            </Form.Item>
+              <Form.Item label="Password">
+                  <Input placeholder="Password" onChange={this.password} />
+                </Form.Item>
+              <Form.Item label="Nomor Telepon">
+                  <Input placeholder="Nomor Telepon" onChange={this.nomor_telepon} />
+                </Form.Item>
+              <Form.Item label="Jabatan">
+                  <Input placeholder="Jabatan" onChange={this.jabatan} />
+                </Form.Item>
                 <Form.Item label="Alamat">
-                  <Input placeholder="input placeholder" onChange={this.alamat} />
+                  <Input placeholder="Alamat" onChange={this.alamat} />
                 </Form.Item>
               </Col>
             </Row>
