@@ -38,9 +38,8 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <span>
-        <a>Edit</a>
         <Divider type="vertical" />
-        <a>Delete</a>
+        <a onClick = {() => deletePelanggan(record)} >Delete</a>
       </span>
     ),
   },
@@ -72,6 +71,28 @@ function onFocus() {
 function onSearch(val) {
   console.log('search:', val);
 }
+
+const { confirm } = Modal;
+function deletePelanggan(s) {
+  confirm({
+    title: "Delete",
+    content: "apakah Delete data Pegawai ini",
+    onOk() {
+      return new Promise((resolve, reject) => {
+        axios.delete(`http://156.67.219.57/api/pelanggan/${s.id}`).then((result)=>{
+            resolve(result.data)
+            window.location.reload(true);
+        }, (error)=>{
+            reject(error)
+        })
+        
+      }).catch(() => console.log('Oops errors!'));
+    },
+    onCancel() { },
+  });
+}
+
+
 
 class DataPelanggan extends Component {
 
@@ -138,7 +159,7 @@ class DataPelanggan extends Component {
     });
   };
 
-  handleOk = e => {
+  handleOk = () => {
      const data = {
        'name': this.state.name,
        'nomor_kk' : this.state.nomor_kk,
@@ -147,7 +168,6 @@ class DataPelanggan extends Component {
        'id_dusun' : this.state.dusun,
        'alamat' : this.state.alamat
      }
-
      axios.post(`http://156.67.219.57/api/pelanggan`,data).then((result)=> {
               console.log(result.data)
               window.location.reload();
@@ -155,9 +175,6 @@ class DataPelanggan extends Component {
               console.log(error)
           })
      
-    //  API.AddPelanggan().then(result => {
-    //     console.log(result)
-    //  })
   };
 
   handleCancel = e => {
@@ -177,7 +194,7 @@ class DataPelanggan extends Component {
           
       })
 
-    axios.get('http://156.67.219.57/api/data-desa').then(res => {
+    axios.get('http://156.67.219.57/api/list-dusun').then(res => {
       const desa = res.data
       console.log(desa)
       this.setState({desa})
