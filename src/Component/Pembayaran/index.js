@@ -129,10 +129,7 @@ class Pembayaran extends Component {
 
   }
 
-  // modal 
-
-  // form 
-
+ 
   componentDidMount() {
     API.DataPembayaran().then(result => {
       this.setState({
@@ -149,7 +146,7 @@ class Pembayaran extends Component {
   }
 
   render() {
-    console.log(this.props)
+
     return (
       <Card title="Data Pembayaran" className="card" >
         <Table bordered="false" columns={columns} dataSource={this.state.DataPelanggan} />

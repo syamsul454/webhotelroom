@@ -11,12 +11,3 @@
 input {
     margin-top: -1%;
 }
-
-.btn-delete {
-    background: red;
-    color: #ffff;
-}
-
-.btn-delete:hover {
-        background: red;
-}
